@@ -10,6 +10,10 @@
     width: 65em;
 }
 
+.text-center{
+    text-align: center;
+}
+
 .image-center{
     display: block;
     text-align: center;
@@ -31,6 +35,12 @@
 
 .sub-title{
     font-size: 24px;
+    font-weight: bold;
+}
+
+.attention{
+    color: #cc0000;
+    font-size: 18px;
     font-weight: bold;
 }
 

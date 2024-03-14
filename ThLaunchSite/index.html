@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="../main.css" />
+        <title>Touhou Launch Site</title>
+    </head>
+    <body>
+        <script>
+            var userAgent = window.navigator.userAgent.toLowerCase();
+            if (userAgent.indexOf('msie') != -1 ||
+                userAgent.indexOf('trident') != -1) {
+                alert("IE からのアクセスを検知しました！");
+                window.location.replace("../docs/notie.html");
+            }
+        </script>
+        <div class="head">Touhou Launch Site</div><br>
+        <div class="center-blocktext">
+            <div class="text-center">
+                <div class="sub-title">
+                    Touhou Launch Site は、東方原作に特化した軽量・高機能ゲームランチャーです。
+                </div>
+            </div><br><br>
+            <div class="title">
+                主な機能
+            </div>
+            <div class="main">
+                Touhou Launch Site の主な機能をご紹介します。
+                <li>ゲームを起動する</li>
+                <li>VsyncPatch、thpracなど動作補助ツールを適用してゲームを起動する</li>
+                <li>環境カスタムプログラムを起動する</li>
+                <li>ゲームの実行履歴、プレイ時間を記録する</li>
+                <li>ゲームのウィンドウを自由にリサイズする</li>
+                <li>ゲームのウィンドウをキャプチャする</li>
+                <li>各種外部ツールを登録し、起動する</li>
+            </div><br>
+            <div class="title">
+                推奨動作環境
+            </div>
+            <div class="main">
+                Microsoft Windows 10/11<br><br>
+                .NET Runtime 8.0 または .NET Desktop Runtime 8.0 のインストールが必要です。<br>
+                以下のリンクよりインストーラーをダウンロードしてインストールをお願いします。<br>
+                <a href="https://dotnet.microsoft.com/ja-jp/download/dotnet/8.0" target="_blank">.NET 8.0 のダウンロード</a>
+            </div><br>
+            <div class="title">
+                免責事項
+            </div>
+            <div class="main">
+                Touhou Launch Site の実行ファイルには2条項BSDライセンスが適用されます。<br>
+                詳しくは以下のリンクより参照してください。<br>
+                <a href="https://github.com/armadillo-winX/ThLaunchSite/blob/master/LICENSE.txt" target="_blank">免責事項</a>
+            </div><br>
+            <div class="title">
+                ダウンロード
+            </div>
+            <div class="main">
+                <br>
+                <a href="https://github.com/armadillo-winX/ThLaunchSite/releases/download/v0.1.0-beta/ThLaunchSite.zip" download="" class="flat-button">Touhou Launch Site のダウンロード</a>
+            </div><br>
+            <div class="title">
+                ソースコード
+            </div>
+            <div class="main">
+                Touhou Launch Site のソースコードは GitHub で2条項BSDライセンスで公開されています。<br>
+                <a href="https://github.com/armadillo-winX/ThLaunchSite" target="_blank">Touhou Launch Site の GitHubリポジトリ</a>
+            </div>
+        </div>
+    </body>
+</html>
