@@ -97,10 +97,12 @@
             <div class="title" id="about-plugin-base-class">基底クラスについて</div>
             <div class="main">
                 基底クラスの継承は東方管制塔 NX が東方管制塔 NX のプラグインであることやプラグインの種類を識別するのに必要です。<br>
-                基底クラスが継承されたクラスを読み込むので、基底クラスを継承するクラスの名前は任意で問題ありません。
+                基底クラスが継承されたクラスを読み込むので、基底クラスを継承するクラスの名前は任意で問題ありません。<br><br>
+                以下に各基底クラスの必須プロパティ、関数とその説明を示します。
             </div><br>
             <div class="sub-title" id="selected-game-plugin">SelectedGamePluginBase</div>
             <div class="main">
+                SelectedGamePlugin は、東方管制塔 NX のメインウィンドウで選択中のゲームについて、その Game ID とゲームの実行ファイルのパスが与えられます。
                 <li>必須プロパティ</li>
                 <table border="1">
                     <tr>
@@ -130,7 +132,14 @@
                     <tr>
                         <th>Main</th><th>なし</th><th>string gameId, string gameFile</th>
                     </tr>
-                </table>
+                </table><br>
+                プラグイン呼び出し時に実行される関数はMain(string gameId, string gameFile)です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
+                関数の引数について<br>
+                <li>gameId</li>
+                <p>東方管制塔 NX のメインウィンドウで選択中のゲームについて、その Game ID が代入されます。(string値)</p>
+                <li>gameFile</li>
+                <p>東方管制塔 NX のメインウィンドウで選択中のゲームについて、その実行ファイルのパスが代入されます。(string値)</p>
             </div><br>
             <div class="sub-title" id="game-files-plugin">GameFilesPluginBase</div>
             <div class="main"></div><br>
