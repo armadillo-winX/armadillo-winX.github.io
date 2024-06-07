@@ -169,6 +169,7 @@
             </div><br>
             <div class="sub-title" id="selected-game-plugin">SelectedGamePluginBase</div>
             <div class="main">
+                この基底クラスを継承したクラスは SelectedGamePlugin として扱われます。
                 SelectedGamePlugin は、東方管制塔 NX のメインウィンドウで選択中のゲームについて、その Game ID とゲームの実行ファイルのパスが与えられます。
                 <li>必須プロパティ</li>
                 <table border="1">
@@ -202,11 +203,13 @@
                 </table><br>
                 プラグイン呼び出し時に実行される関数はMain(string gameId, string gameFile)です。<br>
                 必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
-                関数の引数について<br>
-                <li>gameId</li>
-                <p>東方管制塔 NX のメインウィンドウで選択中のゲームについて、その Game ID が代入されます。(string値)</p>
-                <li>gameFile</li>
-                <p>東方管制塔 NX のメインウィンドウで選択中のゲームについて、その実行ファイルのパスが代入されます。(string値)</p>
+                関数の引数について
+                <ul>
+                    <li>gameId</li>
+                    <p>東方管制塔 NX のメインウィンドウで選択中のゲームについて、その Game ID が代入されます。(string値)</p>
+                    <li>gameFile</li>
+                    <p>東方管制塔 NX のメインウィンドウで選択中のゲームについて、その実行ファイルのパスが代入されます。(string値)</p>
+                </ul>
             </div><br>
             <div class="sub-title" id="game-files-plugin">GameFilesPluginBase</div>
             <div class="main"></div><br>
