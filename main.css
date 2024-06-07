@@ -76,3 +76,7 @@ body{
     color:white;
     line-height: 2;
 }
+
+table{
+    border: solid 1px white
+}
