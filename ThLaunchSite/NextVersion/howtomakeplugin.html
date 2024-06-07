@@ -27,7 +27,84 @@
                 window.location.replace("../../docs/notie.html");
             }
         </script>
-        <img class="image-center" src="../../images/KakoMinaseMaking.png" width="300"/>
-        <div class="head">このページは工事中です…</div>
+        <div class="head">東方管制塔 NX プラグインの作成</div><br>
+        <img class="image-center" src="../../images/KakoMinaseMaking.png" width="250"/>
+        <div class="text-center"><div class="sub-title">このページは工事中です…</div></div><br>
+        <div class="center-blocktext">
+            <div class="title" id="index">目次</div>
+            <div class="main">
+                <li>
+                    <a href="#overview">総論</a>
+                </li>
+                <li>
+                    <a href="#start-to-make">プラグインを作り始める</a>
+                </li>
+            </div><br>
+            <div class="title" id="overview">総論</div>
+            <div class="main">
+                東方管制塔 NX プラグインの作成には C# を用います。<br><br>
+                プラグインの作成に必要なソフトウェアおよびフレームワークは以下の通りです。<br>
+                <li>Microsoft Visual Studio</li>
+                <li>.NET SDK</li>
+                <li>ThLaunchSite.Plugin.dll</li>
+                Microsoft Visual Studio および .NET SDK は適宜インストールしてください。<br>
+                ThLaunchSite.Plugin.dll は東方管制塔 NX の実行ファイル(ThLaunchSite.exe)とともに配布されていますのでそちらをご利用ください。<br><br>
+                また、作成にあたって、東方管制塔開発部が提供する東方管制塔 NX のサンプルプラグイン集のソースコードを参照することをおすすめします。<br>
+                <a href="https://github.com/armadillo-winX/ThLaunchSite.Plugins">東方管制塔 NX プラグイン集</a>
+            </div><br>
+            <div class="title" id="start-to-make">プラグインを作り始める</div>
+            <div class="main">
+                では、実際にプラグインを作成していきましょう。
+                <ol type="1">
+                    <li>Visual Studio を起動する。</li>
+                    <li>.NET クラスライブラリプロジェクトまたは .NET WPF クラスライブラリプロジェクトを作成する。</li>
+                    <p>ウィンドウやダイアログをもつプラグインを作る場合、.NET WPF クラスライブラリプロジェクトを選択しましょう。</p>
+                    <li>ThLaunchSite.Plugin.dll をプロジェクトの参照に追加する。</li>
+                    <p>
+                        ソリューションエクスプローラーからプロジェクトを右クリックし、[追加(D)]→[プロジェクト参照(R)]から参照マネージャーが起動するので
+                        左のペインから[参照]を選択し、右下の[参照(B)]ボタンから ThLaunchSite.Plugin.dll を選択して追加します。<br>
+                        詳しくは
+                        <a href="https://learn.microsoft.com/ja-jp/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2022">
+                            参照マネージャーで参照を追加する - Visual Studio (Windows) | Microsoft Learn
+                        </a>
+                    </p>
+                    <li>任意のソースファイルの先頭に using ThLaunchSite.Plugin を追加し、そのソースファイル内で実装されている任意のクラスに以下のいずれかのクラスを継承し、必要なプロパティおよびメソッドを実装する。</li>
+                    <ul>
+                        <li>
+                            <a href="#selected-game-plugin">SelectedGamePluginBase</a>
+                        </li>
+                        <li>
+                            <a href="#game-files-plugin">GameFilesPluginBase</a>
+                        </li>
+                        <li>
+                            <a href="#game-process-plugin">GameProcessPluginBase</a>
+                        </li>
+                        <li>
+                            <a href="#game-score-files-plugin">GameScoreFilesPluginBase</a>
+                        </li>
+                        <li>
+                            <a href="#game-play-log-plugin">GamePlayLogPluginBase</a>
+                        </li>
+                        <li>
+                            <a href="#tool-plugin">ToolPluginBase</a>
+                        </li>
+                    </ul>
+                </ol>
+            </div>
+            <div class="title" id="about-plugin-base-class">基底クラスについて</div>
+            <div class="sub-title" id="selected-game-plugin">SelectedGamePluginBase</div>
+            <div class="main">
+            </div><br>
+            <div class="sub-title" id="game-files-plugin">GameFilesPluginBase</div>
+            <div class="main"></div><br>
+            <div class="sub-title" id="game-process-plugin">GameProcessPluginBase</div>
+            <div class="main"></div><br>
+            <div class="sub-title" id="game-score-files-plugin">GameScoreFilesPluginBase</div>
+            <div class="main"></div><br>
+            <div class="sub-title" id="game-play-log-plugin">GamePlayLogPluginBase</div>
+            <div class="main"></div><br>
+            <div class="sub-title" id="tool-plugin">ToolPluginBase</div>
+            <div class="main"></div>
+        </div>
     </body>
 </html>
