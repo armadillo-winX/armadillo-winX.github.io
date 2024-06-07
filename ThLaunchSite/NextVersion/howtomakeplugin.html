@@ -95,8 +95,42 @@
                 </ol>
             </div>
             <div class="title" id="about-plugin-base-class">基底クラスについて</div>
+            <div class="main">
+                基底クラスの継承は東方管制塔 NX が東方管制塔 NX のプラグインであることやプラグインの種類を識別するのに必要です。<br>
+                基底クラスが継承されたクラスを読み込むので、基底クラスを継承するクラスの名前は任意で問題ありません。
+            </div><br>
             <div class="sub-title" id="selected-game-plugin">SelectedGamePluginBase</div>
             <div class="main">
+                <li>必須プロパティ</li>
+                <table border="1">
+                    <tr>
+                        <th>プロパティ名</th><th>型</th><th>説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>CommandName</td><td>string</td><td>メニューに表示されるテキストを返します。</td>
+                    </tr>
+                </table>
+                <li>必須関数</li>
+                <table border="1">
+                    <tr>
+                        <th>関数名</th><th>返り値</th><th>引数</th>
+                    </tr>
+                    <tr>
+                        <th>Main</th><th>なし</th><th>string gameId, string gameFile</th>
+                    </tr>
+                </table>
             </div><br>
             <div class="sub-title" id="game-files-plugin">GameFilesPluginBase</div>
             <div class="main"></div><br>
