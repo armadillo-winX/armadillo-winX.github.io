@@ -356,9 +356,86 @@
                 </ul>
             </div><br>
             <div class="sub-title" id="game-play-log-plugin">GamePlayLogPluginBase</div>
-            <div class="main"></div><br>
+            <div class="main">
+                この基底クラスを継承したクラスは GamePlayLogPlugin として扱われます。
+                GamePlayLogPlugin は、東方管制塔 NX のゲーム実行履歴記録ファイル(xml形式)のパスが与えられます。<br>
+                ゲーム実行履歴記録ファイルのフォーマットに関しては後述します。
+                <li>必須プロパティ</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">プロパティ名</th><th width="75">型</th><th width="325">説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>CommandName</td><td>string</td><td>メニューに表示されるテキストを返します。</td>
+                    </tr>
+                </table>
+                <li>必須関数</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">関数名</th><th width="75">返り値</th><th width="325">引数</th>
+                    </tr>
+                    <tr>
+                        <td>Main</td><td>なし</td><td>string gamePlayLogFile</td>
+                    </tr>
+                </table><br>
+                プラグイン呼び出し時に実行される関数はMain(string gamePlayLogFile)です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
+                関数の引数について
+                <ul>
+                    <li>gamePlayLogFile</li>
+                    <p>東方管制塔 NX のゲーム実行履歴記録ファイル(xml形式)のパスが代入されます。(string値)</p>
+                </ul>
+            </div><br>
             <div class="sub-title" id="tool-plugin">ToolPluginBase</div>
-            <div class="main"></div>
+            <div class="main">
+                この基底クラスを継承したクラスは ToolPlugin として扱われます。
+                ToolPlugin は東方管制塔 NX から一切のデータを与えられません。
+                したがって、独立性の高いツールを実装することができます。
+                <li>必須プロパティ</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">プロパティ名</th><th width="75">型</th><th width="325">説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>CommandName</td><td>string</td><td>メニューに表示されるテキストを返します。</td>
+                    </tr>
+                </table>
+                <li>必須関数</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">関数名</th><th width="75">返り値</th><th width="325">引数</th>
+                    </tr>
+                    <tr>
+                        <td>Main</td><td>なし</td><td>なし</td>
+                    </tr>
+                </table><br>
+                プラグイン呼び出し時に実行される関数はMain()です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。
+            </div>
         </div>
     </body>
 </html>
