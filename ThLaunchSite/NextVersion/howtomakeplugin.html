@@ -37,6 +37,9 @@
                     <a href="#overview">総論</a>
                 </li>
                 <li>
+                    <a href="#about-plugin">プラグインの仕様</a>
+                </li>
+                <li>
                     <a href="#start-to-make">プラグインを作り始める</a>
                 </li>
                 <li>
@@ -121,6 +124,15 @@
                         <td>Th19</td><td>東方獣王園</td>
                     </tr>
                 </table>
+            </div><br>
+            <div class="title" id="about-plugin">プラグインの仕様</div>
+            <div class="main">
+                東方管制塔 NX のプラグインは .dll 形式で、東方管制塔 NX 起動時にすべて読み込まれます。<br>
+                GameProcessPlugin(後述)を除いて、プラグインが読み込まれると東方管制塔 NX の[ツール(T)]メニューにプラグイン実行メニューが追加されます。<br><br>
+                プラグインは 東方管制塔 NX の実行ファイル(ThLaunchSite.exe)と同じディレクトリにある plugins ディレクトリにインストールされます。<br>
+                プラグイン読み込みは plugins ディレクトリ直下および全サブディレクトリ下にあるすべての .dll ファイルが対象となります。
+                すなわち、plugins ディレクトリにある .dll ファイルは、どの階層にあるかにかかわらず東方管制塔 NX の起動時にプラグインであるかどうかの検証が行われ、
+                適宜プラグインとして読み込まれます。
             </div><br>
             <div class="title" id="start-to-make">プラグインを作り始める</div>
             <div class="main">
