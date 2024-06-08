@@ -46,6 +46,9 @@
                     <a href="#about-plugin-base-class">基底クラスについて</a>
                 </li>
                 <li>
+                    <a href="make-plugin-with-window">ウィンドウやダイアログをもつプラグインを作る</a>
+                </li>
+                <li>
                     <a href="about-game-execution-log">ゲーム実行履歴記録ファイルについて</a>
                 </li>
             </div><br>
@@ -438,6 +441,15 @@
                 </table><br>
                 プラグイン呼び出し時に実行される関数はMain()です。<br>
                 必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。
+            </div><br>
+            <div class="title" id="make-plugin-with-window">
+                ウィンドウやダイアログをもつプラグインを作る
+            </div>
+            <div class="main">
+                ウィンドウやダイアログをもつプラグインを作るには、必須関数および必須プロパティを実装したクラス内に Window? MainWindow というプロパティを public で実装し、
+                プラグインのすべてのウィンドウやダイアログ(MessageBox 含む)の Owner に MainWindow プロパティを指定することを推奨します。
+                このプロパティが存在すると、東方管制塔 NX はこのプロパティにメインウィンドウのインスタンスを代入します。<br>
+                詳しくは<a href="https://github.com/armadillo-winX/ThLaunchSite.Plugins" target="_blank">東方管制塔 NX プラグイン集</a>のソースコードを参照してください。
             </div><br>
             <div class="title" id="about-game-execution-log">
                 ゲーム実行履歴記録ファイルについて
