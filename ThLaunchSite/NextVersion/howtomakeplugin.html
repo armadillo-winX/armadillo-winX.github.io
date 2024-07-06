@@ -31,6 +31,12 @@
         <img class="image-center" src="../../images/KakoMinaseMaking.png" width="250"/>
         <div class="text-center"><div class="sub-title">このページは工事中です…</div></div><br>
         <div class="center-blocktext">
+            <div class="title" id="introduction">準備</div>
+            <div class="main">
+                本ページでは、東方管制塔 NX ver2.2.0 以降、および東方管制塔 NX プラグイン基底ライブラリ ver0.2.0 をベースにプラグインを作成することを想定しています。<br>
+                プラグイン基底ライブラリのバージョン情報の確認は、東方管制塔 NX のメインウィンドウの [ヘルプ(H)]→[プラグイン基底ライブラリについて] から確認できます。<br>
+                プラグイン基底ライブラリ ver0.2.0 をベースに作られたプラグインは、東方管制塔 NX ver2.2.0 以降が動作対象となります。
+            </div><br>
             <div class="title" id="index">目次</div>
             <div class="main">
                 <li>
@@ -301,20 +307,20 @@
                 <li>必須関数</li>
                 <table border="1">
                     <tr>
-                        <th width="150">関数名</th><th width="75">返り値</th><th width="400">引数</th>
+                        <th width="150">関数名</th><th width="75">返り値</th><th width="550">引数</th>
                     </tr>
                     <tr>
-                        <td>Main</td><td>なし</td><td>string gameId, string gameProcessName</td>
+                        <td>Main</td><td>なし</td><td>string gameId, System.Diagnostics.Process gameProcess</td>
                     </tr>
                 </table><br>
-                プラグイン呼び出し時に実行される関数はMain(string gameId, string gameProcessName)です。<br>
+                プラグイン呼び出し時に実行される関数はMain(string gameId, System.Diagnostics.Process gameProcess)です。<br>
                 必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
                 関数の引数について
                 <ul>
                     <li>gameId</li>
                     <p>東方管制塔 NX で実行されたゲームについて、その Game ID が代入されます。(string値)</p>
-                    <li>gameProcessName</li>
-                    <p>東方管制塔 NX で実行されたゲームについて、そのプロセス名(=実行ファイル名から拡張子を除いた文字列)が代入されます。(string値)</p>
+                    <li>gameProcess</li>
+                    <p>東方管制塔 NX で実行されたゲームについて、そのプロセスのハンドラが代入されます。(System.Diagnostics.Processプロパティ)</p>
                 </ul>
             </div><br>
             <div class="sub-title" id="game-score-files-plugin">GameScoreFilesPluginBase</div>
