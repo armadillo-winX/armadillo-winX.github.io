@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@PhotonSak1054" />
+        <meta name="twitter:domain" content="https://armadillo-winx.github.io/ThLaunchSite/NextVersion/index.html" />
+        <meta name="twitter:title" content="東方管制塔 Lite" />
+        <meta name="twitter:description" content="高機能東方原作専用ゲームランチャー" />
+        <meta name="twitter:image" content="../../images/ThLaunchSite.png" />
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="../../main.css" />
+        <link rel="icon" type="image/png" href="../../images/favicon.png">
+        <title>東方管制塔 Lite | 東方管制塔開発部</title>
+    </head>
+    <body>
+        <script>
+            var userAgent = window.navigator.userAgent.toLowerCase();
+            if (userAgent.indexOf('msie') != -1 ||
+                userAgent.indexOf('trident') != -1) {
+                alert("IE からのアクセスを検知しました！");
+                window.location.replace("../../docs/notie.html");
+            }
+        </script>
+        <img src="../../images/DevTeamLogoTransparent.png" class="image-center" width="800"/><br>
+        <div class="head">東方管制塔 Lite</div><br><br>
+        <div class="center-blocktext">
+            <div class="title" id="what-is-this">
+                これは何?
+            </div>
+            <div class="main">
+                東方管制塔 Lite は、高機能、軽量な東方原作専用ゲームランチャーです。<br>
+                主な機能は以下の通りです。
+                    <li>ゲームを起動する</li>
+                    <li>VsyncPatch、thpracなど動作補助ツールを適用してゲームを起動する</li>
+                    <li>環境カスタムプログラムを起動する</li>
+                    <li>ゲームのウィンドウを自由にリサイズする</li>
+            </div><br>
+            <!-- 
+            <div class="title" id="how-to-use">
+                主な使い方
+            </div>
+            <div class="main">
+                <div class="sub-title">ゲームや custom.exe(環境カスタムプログラム) を起動する</div>
+                [ゲーム選択▾]ボタンから作品を選択します。<br>
+                <img src="../../images/ThLaunchSiteScreenshot002.jpg"/><br><br>
+                管制パネルのボタンからゲームの起動や custom.exe(環境カスタムプログラム) の起動など様々な操作を実行できます。<br>
+                <img src="../../images/ThLaunchSiteScreenshot005.jpg"/><br><br>
+                <div class="sub-title">ゲームのパスを設定する</div>
+                [ゲーム(G)]→[ゲームのパスを設定する]から、「ゲームのパスの設定」ダイアログを起動できます。<br>
+                <img src="../../images/ThLaunchSiteScreenshot003.jpg"/><br>
+                作品を選択し、[参照(B)]ボタンからその作品の実行ファイル(例:東方紅魔郷→東方紅魔郷.exe、東方輝針城→th14.exe)を指定してください。<br>
+                体験版の場合は[体験版として設定する]にチェックをいれてください。<br>
+                メインウィンドウの[ゲーム選択▾]ボタンをクリックすると表示されるゲーム選択メニューには、「ゲームのパスの設定」ダイアログでパスを設定した作品のみが表示されます。
+            </div><br> 
+            -->
+            <div class="title" id="supported-titles">
+                対応している作品
+            </div>
+            <div class="main">
+                <li>東方紅魔郷　～ the Embodiment of Scarlet Devil.</li>
+                <li>東方妖々夢　～ Perfect Cherry Blossom.</li>
+                <li>東方永夜抄　～ Imperishable Night.</li>
+                <li>東方花映塚　～ Phantasmagoria of Flower View.</li>
+                <li>東方風神録　～ Mountain of Faith.</li>
+                <li>東方地霊殿　～ Subterranean Animism.</li>
+                <li>東方星蓮船　～ Undefined Fantastic Object.</li>
+                <li>東方神霊廟　～ Ten Desires.</li>
+                <li>東方輝針城　～ Double Dealing Character.</li>
+                <li>東方紺珠伝　～ Legacy of Lunatic Kingdom.</li>
+                <li>東方天空璋　～ Hidden Star in Four Seasons.</li>
+                <li>東方鬼形獣　～ Wily Beast and Weakest Creature.</li>
+                <li>東方虹龍洞　～ Unconnected Marketeers.</li>
+                <li>東方獣王園　～ Unfinished Dream of All Living Ghost.</li><br>
+                <li>東方文花帖　～ Shoot the Bullet.</li>
+                <li>ダブルスポイラー　～ 東方文花帖</li>
+                <li>妖精大戦争　～ 東方三月精</li>
+                <li>弾幕アマノジャク　～ Impossible Spell Card.</li>
+                <li>秘封ナイトメアダイアリー　～ Violet Detector.</li>
+                <li>バレットフィリア達の闇市場 〜 100th Black Market.</li>
+            </div><br>
+            <div class="title" id="recommended-environment">
+                推奨動作環境
+            </div>
+            <div class="main">
+                Microsoft Windows 10/11<br><br>
+                .NET Runtime 8.0 または .NET Desktop Runtime 8.0 のインストールが必要です。<br>
+                以下のリンクよりインストーラーをダウンロードしてインストールをお願いします。<br>
+                <a href="https://dotnet.microsoft.com/ja-jp/download/dotnet/8.0" target="_blank">.NET 8.0 のダウンロード</a>
+            </div><br>
+            <div class="title" id="license">
+                免責事項
+            </div>
+            <div class="main">
+                東方管制塔 NX の実行ファイルには2条項BSDライセンスが適用されます。<br>
+                詳しくは以下のリンクより参照してください。<br>
+                <a href="https://github.com/armadillo-winX/ThLaunchSite/blob/master/LICENSE.txt" target="_blank">免責事項</a>
+            </div><br>
+            <div class="title" id="download">
+                ダウンロード
+            </div>
+            <div class="main">
+                <br>
+                <a href="https://github.com/armadillo-winX/ThLaunchSite/releases/download/v2.2.0-release/ThLaunchSite.zip" download="" class="flat-button">
+                        東方管制塔 Lite のダウンロード
+                </a>
+            </div><br>
+            <div class="title" id="releasenote">
+                更新履歴
+            </div>
+            <div class="sub-title">ver0.1.0-beta</div>
+            <div class="main">
+                <li>最初のウェブ公開ベータ版。</li>
+            </div><br>
+            <div class="title" id="source-code">
+                ソースコード
+            </div>
+            <div class="main">
+                東方管制塔 NX のソースコードは GitHub で2条項BSDライセンスで公開されています。<br>
+                <a href="https://github.com/armadillo-winX/ThLaunchSite" target="_blank">東方管制塔 NX の GitHubリポジトリ</a>
+            </div><br>
+            <div class="title" id="about-devteam">
+                開発部について
+            </div>
+            <div class="main">
+                <a href="./aboutdevteam.html">東方管制塔開発部について</a>
+            </div><br>
+            <div class="title" id="develepment-supporter">
+                開発協力者
+            </div>
+            <div class="main">
+                <li>千葉(<a href="https://x.com/oe725877" target="_blank">@oe725877</a>)</li>
+                <li>稲凪咲(お餅のCreeper)(<a href="https://x.com/Riku_2004" target="_blank">@Riku_2004</a>)</li>
+            </div>
+        </div>
+    </body>
+    <footer style="text-align:center">
+        <small>Copyright &copy 2024- Mashiro Tamane</small>
+    </footer>
+</html>
