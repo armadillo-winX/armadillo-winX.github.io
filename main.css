@@ -20,6 +20,13 @@
     margin: auto;
 }
 
+.image-center-circle{
+    display: block;
+    text-align: center;
+    margin: auto;
+    border-radius: 50%;
+}
+
 .head {
     font-size: 35px;
     font-weight: bolder;
