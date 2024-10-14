@@ -81,6 +81,14 @@
     color:  white;
 }
 
+.bottom-footer {
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 15px;
+    width: 100%;
+}
+
 a {
     color: #0086CC;
     display: inline-block;
