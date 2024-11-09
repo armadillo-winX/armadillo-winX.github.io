@@ -16,7 +16,7 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="../../main.css" />
         <link rel="icon" type="image/png" href="../../images/reimu0.png">
-        <title>東方管制塔 EX のご紹介 | 東方管制塔開発部</title>
+        <title>東方管制塔 EX | 東方管制塔開発部</title>
     </head>
     <body>
         <script>
@@ -29,19 +29,16 @@
         </script>
         <img src="../../images/ThGameMgr.EX.Transparent.png" class="image-center" width="800"/><br>
         <div class="center-blocktext">
-            <div class="title-center" id="introduction">東方管制塔 EX のご紹介</div>
+            <div class="title-center" id="feature">これは何?</div>
             <div class="main">
-                東方管制塔 EX は、東方管制塔開発部が新たに開発中の多機能型の新東方管制塔です。<br>
-                東方原作専用のゲームランチャーとしての機能だけでなく、スコアデータビューアをはじめ、多種多様な機能の実装が計画されています。
-            </div><br>
-            <div class="title-center" id="feature">東方管制塔 EX の機能</div>
-            <div class="sub-title">ユーザー機能</div>
-            <div class="main">
-                東方管制塔 EX では、各種設定を「ユーザー」ごとに管理し、設定はユーザーごとに完全に隔離されます。
+                東方管制塔 EX は、上海アリス幻樂団による「東方Project」作品群に特化したゲームランチャー/スコアビューアです。<br>
+                主な機能は以下の通りです。
             </div><br>
             <div class="sub-title">ゲームランチャー・管制パネル</div>
             <div class="main">
-                既存の東方管制塔 Lite/NX に実装されているようなゲームランチャーや管制パネルも実装されています。
+                <img src="../../images/ThGameMgr.EX.Screenshot000.png" width="600"/><br>
+                東方の実行ファイル(th**.exe)を起動します。VsyncPatch(vpatch.exe)やthpracを適用して起動したり、custom.exe(環境設定)を起動することも可能です。<br>
+                また、ゲームの実行時間を計測して記録したり、ゲームの音量を調整したりできます。
             </div><br>
             <div class="sub-title">スコアビューア、御札戦歴ビューア</div>
             <div class="main">
@@ -53,28 +50,64 @@
                 <img src="../../images/ThGameMgr.EX.Screenshot002.png" width="250"/><br>
                 スコアビューアにおいてハイスコアデータを難易度、自機でフィルタリングして表示したり、御札戦歴データをスペルカード術者(敵機)でフィルタリングして表示したりできます。
             </div><br>
+            <div class="sub-title">ユーザー機能</div>
+            <div class="main">
+                東方管制塔 EX では、各種設定を「ユーザー」ごとに管理し、設定はユーザーごとに完全に隔離されます。
+            </div><br>
             <div class="sub-title">フレーム型ウィンドウリサイザ</div>
             <div class="main">
-                <img src="../../images/ThGameMgr.EX.Screenshot003.png" width="800"/><br>
+                <img src="../../images/ThGameMgr.Ex.GifCapture001.gif" width="800"/><br>
                 初期の頃の作品など、サイズが固定のウィンドウをリサイズすることができます。
             </div><br>
             <div class="main">これらの画面は開発中のものであり、今後変更が加わる可能性が大いにあります。</div><br>
-            <div class="title-center" id="plans">実装されるかもしれない機能</div>
+            <div class="title-center" id="supported-titles">対応している作品</div>
             <div class="main">
-                以下の機能の実装を予定しています。
-                <li>外部ツールランチャー</li>
-                また、以下の機能の実装を検討しています。
-                <li>リプレイファイルの管理機能</li>
-                <li>プラグイン機能</li>
+                現在、以下の作品の製品版に対応しています。(ゲームのバージョンが古いとご利用になれない可能性があります。)
+                <br>また、東方花映塚については、ハイスコアビューアおよび御札戦歴ビューアがご利用になれません。
+                <br><br>
+                <li>東方紅魔郷　～ the Embodiment of Scarlet Devil.</li>
+                <li>東方妖々夢　～ Perfect Cherry Blossom.</li>
+                <li>東方永夜抄　～ Imperishable Night.</li>
+                <li>東方花映塚　～ Phantasmagoria of Flower View.</li>
+                <li>東方風神録　～ Mountain of Faith.</li>
+                <li>東方地霊殿　～ Subterranean Animism.</li>
+                <li>東方星蓮船　～ Undefined Fantastic Object.</li>
+                <li>東方神霊廟　～ Ten Desires.</li>
+                <li>東方輝針城　～ Double Dealing Character.</li>
+                <li>東方紺珠伝　～ Legacy of Lunatic Kingdom.</li>
+                <li>東方天空璋　～ Hidden Star in Four Seasons.</li>
+                <li>東方鬼形獣　～ Wily Beast and Weakest Creature.</li>
+                <li>東方虹龍洞　～ Unconnected Marketeers.</li>
             </div><br>
             <div class="title-center" id="code-name">コードネーム</div>
             <div class="main">
                 東方管制塔 EX では、メジャーバージョン毎に固有のコードネームを割り当てています。<br>
                 ver0.x.xのコードネームは"Shizuka"であり、これは月面の「静かの海」に由来します。
             </div><br>
-            <div class="title-center" id="download">ダウンロード</div>
+            <div class="title-center" id="recommended-environment">
+                推奨動作環境
+            </div>
             <div class="main">
-                東方管制塔 EX "Shizuka" は現在開発中であり、一般公開はしばらく後です。しばしの間お待ちください…
+                Microsoft Windows 10/11<br><br>
+                .NET Runtime 8.0 または .NET Desktop Runtime 8.0 のインストールが必要です。<br>
+                以下のリンクよりインストーラーをダウンロードしてインストールをお願いします。<br>
+                <a href="https://dotnet.microsoft.com/ja-jp/download/dotnet/8.0" target="_blank">.NET 8.0 のダウンロード</a>
+            </div><br>
+            <div class="title-center" id="download">
+                ダウンロード
+            </div>
+            <div class="main">
+                <br>
+                <a href="https://github.com/armadillo-winX/ThGameMgr.Ex/releases/download/v0.1.0-alpha/ThGameMgr.Ex.7z" download="" class="flat-button">
+                    東方管制塔 EX のダウンロード (7zファイル)
+                </a><br><br>
+                <a href="https://github.com/armadillo-winX/ThGameMgr.Ex/releases/download/v0.1.0-alpha/ThGameMgr.Ex.zip" download="" class="flat-button">
+                    東方管制塔 EX のダウンロード (zipファイル)
+                </a>
+                <br><br>
+                7z ファイルでダウンロードするか、zip ファイルでダウンロードするか選択できます。<br>
+                どちらを選んでも中身は変わりませんが、7z ファイルの方がダウンロードサイズが小さくなります。<br>
+                Windows 11 ではエクスプローラーの標準機能で 7z ファイルを解凍できます。
             </div><br>
             <div class="title-center" id="about-icon">
                 アイコンについて
@@ -83,6 +116,20 @@
                 アイコンに使われている博麗霊夢のイラストはつくだに
                 (<a href="https://x.com/tukudani_2005" target="_blank">@tukudani_2005</a>)
                 さんが作成したものです。
+            </div><br>
+            <div class="title-center" id="repository">
+                ソースコード
+            </div>
+            <div class="main">
+                東方管制塔 EX は GitHub で2条項BSDライセンス下でソースコードが公開されています。<br>
+                <a href="https://github.com/armadillo-winX/ThGameMgr.Ex" target="_blank">東方管制塔 EX のリポジトリ(GitHub)</a>
+            </div><br>
+            <div class="title-center" id="develepment-supporter">
+                開発協力者
+            </div>
+            <div class="main">
+                <li>稲凪咲(お餅のCreeper)(<a href="https://x.com/Riku_2004" target="_blank">@Riku_2004</a>)</li>
+                <li>千葉(<a href="https://x.com/oe725877" target="_blank">@oe725877</a>)</li>
             </div>
         </div>
     </body>
