@@ -44,6 +44,9 @@
                 <li>
                     <a href="#about-plugin">プラグインの仕様</a>
                 </li>
+                <li>
+                    <a href="#start-to-make">プラグインを作り始める</a>
+                </li>
             </div><br>
             <div class="title" id="overview">総論</div>
             <div class="main">
@@ -109,6 +112,40 @@
                 すなわち、Plugin ディレクトリにある .dll ファイルは、どの階層にあるかにかかわらず東方管制塔 EX の起動時にプラグインであるかどうかの検証が行われ、
                 適宜プラグインとして読み込まれます。
             </div><br>
+            <div class="title" id="start-to-make">プラグインを作り始める</div>
+            <div class="main">
+                では、実際にプラグインを作成していきましょう。
+                <ol type="1">
+                    <li>Visual Studio を起動する。</li>
+                    <li>.NET クラスライブラリプロジェクトまたは .NET WPF クラスライブラリプロジェクトを作成する。</li>
+                    <p>ウィンドウやダイアログをもつプラグインを作る場合、.NET WPF クラスライブラリプロジェクトを選択しましょう。</p>
+                    <li>ThGameMgr.Ex.Plugin.dll をプロジェクトの参照に追加する。</li>
+                    <p>
+                        ソリューションエクスプローラーからプロジェクトを右クリックし、[追加(D)]→[プロジェクト参照(R)]から参照マネージャーが起動するので
+                        左のペインから[参照]を選択し、右下の[参照(B)]ボタンから ThGameMgr.Ex.Plugin.dll を選択して追加します。<br>
+                        詳しくは
+                        <a href="https://learn.microsoft.com/ja-jp/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2022" target="_blank">
+                            参照マネージャーで参照を追加する - Visual Studio (Windows) | Microsoft Learn
+                        </a>
+                    </p>
+                    <li>任意のソースファイルの先頭に using ThGameMgr.Ex.Plugin を追加し、そのソースファイル内で実装されている任意のクラスに以下のいずれかの基底クラスを継承し、必要なプロパティおよびメソッドを実装する。</li>
+                    <ul>
+                        <li>
+                            StartGamePluginBase
+                        </li>
+                        <li>
+                            SelectedGamePluginBase
+                        </li>
+                        <li>
+                            GameFilesPluginBase
+                        </li>
+                        <li>
+                            ToolPluginBase
+                        </li>
+                    </ul>
+                </ol>
+                作りたいプラグインの役割に応じて、継承するべき基底クラスが異なります(後述)。
+            </div>
         </div>
     </body>
 </html>
