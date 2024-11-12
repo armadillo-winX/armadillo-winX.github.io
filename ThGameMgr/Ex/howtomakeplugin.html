@@ -47,6 +47,9 @@
                 <li>
                     <a href="#start-to-make">プラグインを作り始める</a>
                 </li>
+                <li>
+                    <a href="#start-game-plugin">プラグインを作る：ゲーム起動プラグイン</a>
+                </li>
             </div><br>
             <div class="title" id="overview">総論</div>
             <div class="main">
@@ -145,6 +148,65 @@
                     </ul>
                 </ol>
                 作りたいプラグインの役割に応じて、継承するべき基底クラスが異なります(後述)。
+            </div><br>
+            <div class="title" id="start-game-plugin">プラグインを作る：ゲーム起動プラグイン</div>
+            <div class="main">
+                ゲーム起動プラグインは、ゲームを起動する機能を提供するプラグインです。
+                例えば、東方管制塔 EX 標準の vpatch.exe や thprac 適用機能のように、外部ツールを適用してゲームを起動する機能を実現することができます。
+                このプラグインを作るには、基底クラス StartGamePluginBase を継承する必要があります。
+                このプラグインは、東方管制塔 EX のメインウィンドウで選択中のゲームについて、その Game ID とゲームの実行ファイルのパスが与えられます。
+                <div class="sub-title">必須プロパティ</div>
+                <table border="1">
+                    <tr>
+                        <th width="150">プロパティ名</th><th width="75">型</th><th width="325">説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>CommandName</td><td>string</td><td>メニューに表示されるテキストを返します。</td>
+                    </tr>
+                </table>
+                <div class="sub-title">必須関数</div>
+                <table border="1">
+                    <tr>
+                        <th width="150">関数名</th><th width="300">返り値</th><th width="325">引数</th>
+                    </tr>
+                    <tr>
+                        <td>Main</td><td>System.Diagnostics.Process型</td><td>string gameId, string gameFilePath</td>
+                    </tr>
+                </table><br>
+                プラグイン呼び出し時に実行される関数は Main(string gameId, string gameFilePath) です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
+                <div class="sub-title">関数の引数について</div>
+                <ul>
+                    <li>gameId</li>
+                    <p>東方管制塔 EX のメインウィンドウで選択中のゲームについて、その Game ID が代入されます。(string値)</p>
+                    <li>gameFilePath</li>
+                    <p>東方管制塔 EX のメインウィンドウで選択中のゲームについて、その実行ファイルのパスが代入されます。(string値)</p>
+                </ul><br>
+                <div class="sub-title">返り値について</div>
+                関数の返り値の型は、
+                <a href="https://learn.microsoft.com/ja-jp/dotnet/api/system.diagnostics" target="_blank">System.Diagnostics名前空間</a>
+                の
+                <a href="https://learn.microsoft.com/ja-jp/dotnet/api/system.diagnostics.process" target="_blank">Process型</a>
+                です。
+                プラグインで起動したゲームプロセスのインスタンスをProcess型として返してください。
+                プラグイン呼び出し後、返されたProcessがゲームプロセスのものであるかどうか、東方管制塔 EX によって判定されます。<br><br>
+                <div class="sub-title">参考</div>
+                東方管制塔開発部が提供する AutoThpracSelector は、ゲーム起動プラグインに該当します。<br>
+                <a href="https://github.com/armadillo-winX/ThGameMgr.Ex.AutoThpracSelector" target="_blank">
+                    AutoThpracSelector(GitHub)
+                </a>
             </div>
         </div>
     </body>
