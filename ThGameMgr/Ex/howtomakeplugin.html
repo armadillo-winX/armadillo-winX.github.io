@@ -1,0 +1,114 @@
+<html>
+    <header>
+        <h1>
+            <a href="../index.html">
+                <img src="../../images/DevTeamLogoTransparent.png" width="300"/>
+            </a>
+        </h1>
+    </header>
+    <head>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@PhotonSak1054" />
+        <meta name="twitter:domain" content="https://armadillo-winx.github.io/ThGameMgr/EX/howtomakeplugin.html" />
+        <meta name="twitter:title" content="東方管制塔 EX プラグインのつくりかた" />
+        <meta name="twitter:description" content="東方向けゲームランチャー/スコアビューア" />
+        <meta name="twitter:image" content="https://armadillo-winx.github.io/images/ThGameMgr.EX.TwitterCard.png" />
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="../../main.css" />
+        <link rel="icon" type="image/png" href="../../images/reimu0.png">
+        <title>東方管制塔 EX プラグインのつくりかた | 東方管制塔開発部</title>
+    </head>
+    <body>
+        <script>
+            var userAgent = window.navigator.userAgent.toLowerCase();
+            if (userAgent.indexOf('msie') != -1 ||
+                userAgent.indexOf('trident') != -1) {
+                alert("IE からのアクセスを検知しました！");
+                window.location.replace("../../docs/notie.html");
+            }
+        </script>
+        <div class="head">東方管制塔 EX プラグインのつくりかた</div><br>
+        <img class="image-center" src="../../images/KakoMinaseMaking.png" width="250"/>
+        <div class="text-center"><div class="sub-title">このページは工事中です…</div></div><br>
+        <div class="center-blocktext">
+            <div class="title" id="introduction">準備</div>
+            <div class="main">
+                本ページでは、東方管制塔 EX ver0.2.0-alpha 以降、および東方管制塔 EX プラグイン基底ライブラリ ver0.1.0-alpha をベースにプラグインを作成することを想定しています。<br>
+                プラグイン基底ライブラリのバージョン情報の確認は、東方管制塔 EX のメインウィンドウの [ヘルプ(H)]→[プラグイン基底ライブラリについて] から確認できます。<br>
+            </div><br>
+            <div class="title" id="index">目次</div>
+            <div class="main">
+                <li>
+                    <a href="#overview">総論</a>
+                </li>
+                <li>
+                    <a href="#about-plugin">プラグインの仕様</a>
+                </li>
+            </div><br>
+            <div class="title" id="overview">総論</div>
+            <div class="main">
+                東方管制塔 EX プラグインの作成には C# を用います。<br><br>
+                プラグインの作成に必要なソフトウェアおよびフレームワークは以下の通りです。<br>
+                <li>Microsoft Visual Studio</li>
+                <li>.NET SDK</li>
+                <li>ThGameMgr.Ex.Plugin.dll</li>
+                Microsoft Visual Studio および .NET SDK は適宜インストールしてください。<br>
+                ThGameMgr.Ex.Plugin.dll は東方管制塔 EX の実行ファイル(ThGameMgr.Ex.exe)とともに配布されていますのでそちらをご利用ください。<br><br>
+                また、東方管制塔 EX 内部では、各作品に string 値の Game ID を割り当てて扱っているので、プラグインでも同様に Game ID に対応する必要があります。<br>
+                以下に Game ID と割り当てられている作品について示します。
+                <table border="1">
+                    <tr>
+                        <th width="100">Game ID</th><th width="220">作品名</th>
+                    </tr>
+                    <tr>
+                        <td>Th06</td><td>東方紅魔郷</td>
+                    </tr>
+                    <tr>
+                        <td>Th07</td><td>東方妖々夢</td>
+                    </tr>
+                    <tr>
+                        <td>Th08</td><td>東方永夜抄</td>
+                    </tr>
+                    <tr>
+                        <td>Th09</td><td>東方花映塚</td>
+                    </tr>
+                    <tr>
+                        <td>Th10</td><td>東方風神録</td>
+                    </tr>
+                    <tr>
+                        <td>Th11</td><td>東方地霊殿</td>
+                    </tr>
+                    <tr>
+                        <td>Th12</td><td>東方星蓮船</td>
+                    </tr>
+                    <tr>
+                        <td>Th13</td><td>東方神霊廟</td>
+                    </tr>
+                    <tr>
+                        <td>Th14</td><td>東方輝針城</td>
+                    </tr>
+                    <tr>
+                        <td>Th15</td><td>東方紺珠伝</td>
+                    </tr>
+                    <tr>
+                        <td>Th16</td><td>東方天空璋</td>
+                    </tr>
+                    <tr>
+                        <td>Th17</td><td>東方鬼形獣</td>
+                    </tr>
+                    <tr>
+                        <td>Th18</td><td>東方虹龍洞</td>
+                    </tr>
+                </table>
+            </div><br>
+            <div class="title" id="about-plugin">プラグインの仕様</div>
+            <div class="main">
+                東方管制塔 EX のプラグインは .dll 形式で、東方管制塔 EX 起動時にすべて読み込まれます。<br>
+                プラグインは 東方管制塔 EX の実行ファイル(ThGameMgr.Ex.exe)と同じディレクトリにある Plugin ディレクトリにインストールされます。<br>
+                プラグイン読み込みは Plugin ディレクトリ直下および全サブディレクトリ下にあるすべての .dll ファイルが対象となります。
+                すなわち、Plugin ディレクトリにある .dll ファイルは、どの階層にあるかにかかわらず東方管制塔 EX の起動時にプラグインであるかどうかの検証が行われ、
+                適宜プラグインとして読み込まれます。
+            </div><br>
+        </div>
+    </body>
+</html>
