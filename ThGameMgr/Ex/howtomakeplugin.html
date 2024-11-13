@@ -53,6 +53,9 @@
                 <li>
                     <a href="#selected-game-plugin">プラグインを作る：単一ゲームファイルプラグイン</a>
                 </li>
+                <li>
+                    <a href="#game-files-plugin">プラグインを作る：全ゲームファイルプラグイン</a>
+                </li>
             </div><br>
             <div class="title" id="overview">総論</div>
             <div class="main">
@@ -261,6 +264,51 @@
                 <a href="https://github.com/armadillo-winX/ThGameMgr.Ex.FileManager" target="_blank">
                     東方管制塔 EX ファイルマネージャ(GitHub)
                 </a>
+            </div><br>
+            <div class="title" id="game-files-plugin">プラグインを作る：全ゲームファイルプラグイン</div>
+            <div class="main">
+                全ゲームファイルプラグインは、東方管制塔 EX にパスが登録されている全ゲームの実行ファイルパスにアクセスできます。
+                このプラグインを作るには、基底クラス GameFilesPlugin を継承する必要があります。
+                このプラグインは、東方管制塔 EX にパスが登録されている作品の Game ID のリストと、各々のゲームの実行ファイルパスが与えられます。
+                <div class="sub-title">必須プロパティ</div>
+                <table border="1">
+                    <tr>
+                        <th width="150">プロパティ名</th><th width="75">型</th><th width="325">説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>CommandName</td><td>string</td><td>メニューに表示されるテキストを返します。</td>
+                    </tr>
+                </table>
+                <div class="sub-title">必須関数</div>
+                <table border="1">
+                    <tr>
+                        <th width="150">関数名</th><th width="75">返り値</th><th width="550">引数</th>
+                    </tr>
+                    <tr>
+                        <td>Main</td><td>なし</td><td>List&lt;string&gt; availableGamesList,<br>Dictionary&lt;string, string&gt; availableGameFilesDictionary</td>
+                    </tr>
+                </table><br>
+                プラグイン呼び出し時に実行される関数は Main(List&lt;string&gt; availableGamesList, Dictionary&lt;string, string&gt; availableGameFilesDictionary) です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
+                <div class="sub-title">関数の引数について</div>
+                <ul>
+                    <li>availableGamesList</li>
+                    <p>東方管制塔 EX にパスが登録されている作品の Game ID のリストが代入されます。(List&lt;string&gt;型)</p>
+                    <li>availableGameFilesDictionary</li>
+                    <p>東方管制塔 EX にパスが登録されている作品の Game ID を Key 、実行ファイルパスを Value とする Dictionary が代入されます。(Dictionary&lt;string, string&gt;型)</p>
+                </ul>
             </div>
         </div>
     </body>
