@@ -1,0 +1,25 @@
+<header class="site-header">
+    <div class="site-header__inner">
+        {% if page.section == "devteam" %}
+        <a class="site-brand" href="{{ '/ThGameMgr/' | relative_url }}">東方管制塔開発部</a>
+        <nav class="site-nav" aria-label="メインナビゲーション">
+            <ul>
+                <li><a href="{{ '/ThGameMgr/' | relative_url }}">開発部トップ</a></li>
+                <li><a href="{{ '/ThGameMgr/Ex/' | relative_url }}">東方管制塔 EX</a></li>
+                <li><a href="{{ '/ThGameMgr/Lite/' | relative_url }}">東方管制塔 Lite</a></li>
+                <li><a href="{{ '/ThGameMgr/News/' | relative_url }}">お知らせ</a></li>
+                <li><a href="{{ '/' | relative_url }}">ましろん.NET</a></li>
+            </ul>
+        </nav>
+        {% else %}
+        <a class="site-brand" href="{{ '/' | relative_url }}">ましろん.NET</a>
+        <nav class="site-nav" aria-label="メインナビゲーション">
+            <ul>
+                <li><a href="{{ '/' | relative_url }}">ホーム</a></li>
+                <li><a href="{{ '/contents.html' | relative_url }}">ソフトウェア・コンテンツ</a></li>
+                <li><a href="{{ '/pages.html' | relative_url }}">ページ一覧</a></li>
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+</header>

@@ -1,0 +1,447 @@
+---
+layout: default
+title: "東方管制塔 NX プラグインの作成 | 東方管制塔開発部"
+section: devteam
+description: "高機能東方原作専用ゲームランチャー"
+social_image: "/images/ThLaunchSite.png"
+favicon: "/images/favicon.png"
+---
+
+<div class="head">東方管制塔 NX プラグインの作成</div><br>
+        <img class="image-center" src="../../images/KakoMinaseMaking.png" width="250"/>
+        <div class="text-center"><div class="sub-title">このページは工事中です…</div></div><br>
+        <div class="center-blocktext">
+            <div class="title" id="introduction">準備</div>
+            <div class="main">
+                本ページでは、東方管制塔 NX ver2.2.0 以降、および東方管制塔 NX プラグイン基底ライブラリ ver0.2.0 をベースにプラグインを作成することを想定しています。<br>
+                プラグイン基底ライブラリのバージョン情報の確認は、東方管制塔 NX のメインウィンドウの [ヘルプ(H)]→[プラグイン基底ライブラリについて] から確認できます。<br>
+                プラグイン基底ライブラリ ver0.2.0 をベースに作られたプラグインは、東方管制塔 NX ver2.2.0 以降が動作対象となります。
+            </div><br>
+            <div class="title" id="index">目次</div>
+            <div class="main">
+                <li>
+                    <a href="#overview">総論</a>
+                </li>
+                <li>
+                    <a href="#about-plugin">プラグインの仕様</a>
+                </li>
+                <li>
+                    <a href="#start-to-make">プラグインを作り始める</a>
+                </li>
+                <li>
+                    <a href="#about-plugin-base-class">基底クラスについて</a>
+                </li>
+                <li>
+                    <a href="#make-plugin-with-window">ウィンドウやダイアログをもつプラグインを作る</a>
+                </li>
+                <li>
+                    <a href="#about-game-execution-log">ゲーム実行履歴記録ファイルについて</a>
+                </li>
+            </div><br>
+            <div class="title" id="overview">総論</div>
+            <div class="main">
+                東方管制塔 NX プラグインの作成には C# を用います。<br><br>
+                プラグインの作成に必要なソフトウェアおよびフレームワークは以下の通りです。<br>
+                <li>Microsoft Visual Studio</li>
+                <li>.NET SDK</li>
+                <li>ThLaunchSite.Plugin.dll</li>
+                Microsoft Visual Studio および .NET SDK は適宜インストールしてください。<br>
+                ThLaunchSite.Plugin.dll は東方管制塔 NX の実行ファイル(ThLaunchSite.exe)とともに配布されていますのでそちらをご利用ください。<br><br>
+                また、作成にあたって、東方管制塔開発部が提供する東方管制塔 NX のサンプルプラグイン集のソースコードを参照することをおすすめします。<br>
+                <a href="https://github.com/armadillo-winX/ThLaunchSite.Plugins" target="_blank">東方管制塔 NX プラグイン集 | GitHub</a><br><br>
+                また、東方管制塔 NX 内部では、各作品に string 値の Game ID を割り当てて扱っているので、プラグインでも同様に Game ID に対応する必要があります。<br>
+                以下に Game ID と割り当てられている作品について示します。
+                <table border="1">
+                    <tr>
+                        <th width="100">Game ID</th><th width="220">作品名</th>
+                    </tr>
+                    <tr>
+                        <td>Th06</td><td>東方紅魔郷</td>
+                    </tr>
+                    <tr>
+                        <td>Th07</td><td>東方妖々夢</td>
+                    </tr>
+                    <tr>
+                        <td>Th08</td><td>東方永夜抄</td>
+                    </tr>
+                    <tr>
+                        <td>Th09</td><td>東方花映塚</td>
+                    </tr>
+                    <tr>
+                        <td>Th095</td><td>東方文花帖</td>
+                    </tr>
+                    <tr>
+                        <td>Th10</td><td>東方風神録</td>
+                    </tr>
+                    <tr>
+                        <td>Th11</td><td>東方地霊殿</td>
+                    </tr>
+                    <tr>
+                        <td>Th12</td><td>東方星蓮船</td>
+                    </tr>
+                    <tr>
+                        <td>Th125</td><td>ダブルスポイラー</td>
+                    </tr>
+                    <tr>
+                        <td>Th128</td><td>妖精大戦争</td>
+                    </tr>
+                    <tr>
+                        <td>Th13</td><td>東方神霊廟</td>
+                    </tr>
+                    <tr>
+                        <td>Th14</td><td>東方輝針城</td>
+                    </tr>
+                    <tr>
+                        <td>Th143</td><td>弾幕アマノジャク</td>
+                    </tr>
+                    <tr>
+                        <td>Th15</td><td>東方紺珠伝</td>
+                    </tr>
+                    <tr>
+                        <td>Th16</td><td>東方天空璋</td>
+                    </tr>
+                    <tr>
+                        <td>Th165</td><td>秘封ナイトメアダイアリー</td>
+                    </tr>
+                    <tr>
+                        <td>Th17</td><td>東方鬼形獣</td>
+                    </tr>
+                    <tr>
+                        <td>Th18</td><td>東方虹龍洞</td>
+                    </tr>
+                    <tr>
+                        <td>Th185</td><td>バレットフィリア達の闇市場</td>
+                    </tr>
+                    <tr>
+                        <td>Th19</td><td>東方獣王園</td>
+                    </tr>
+                </table>
+            </div><br>
+            <div class="title" id="about-plugin">プラグインの仕様</div>
+            <div class="main">
+                東方管制塔 NX のプラグインは .dll 形式で、東方管制塔 NX 起動時にすべて読み込まれます。<br>
+                GameProcessPlugin(後述)を除いて、プラグインが読み込まれると東方管制塔 NX の[ツール(T)]メニューにプラグイン実行メニューが追加されます。<br><br>
+                プラグインは 東方管制塔 NX の実行ファイル(ThLaunchSite.exe)と同じディレクトリにある plugins ディレクトリにインストールされます。<br>
+                プラグイン読み込みは plugins ディレクトリ直下および全サブディレクトリ下にあるすべての .dll ファイルが対象となります。
+                すなわち、plugins ディレクトリにある .dll ファイルは、どの階層にあるかにかかわらず東方管制塔 NX の起動時にプラグインであるかどうかの検証が行われ、
+                適宜プラグインとして読み込まれます。
+            </div><br>
+            <div class="title" id="start-to-make">プラグインを作り始める</div>
+            <div class="main">
+                では、実際にプラグインを作成していきましょう。
+                <ol type="1">
+                    <li>Visual Studio を起動する。</li>
+                    <li>.NET クラスライブラリプロジェクトまたは .NET WPF クラスライブラリプロジェクトを作成する。</li>
+                    <p>ウィンドウやダイアログをもつプラグインを作る場合、.NET WPF クラスライブラリプロジェクトを選択しましょう。</p>
+                    <li>ThLaunchSite.Plugin.dll をプロジェクトの参照に追加する。</li>
+                    <p>
+                        ソリューションエクスプローラーからプロジェクトを右クリックし、[追加(D)]→[プロジェクト参照(R)]から参照マネージャーが起動するので
+                        左のペインから[参照]を選択し、右下の[参照(B)]ボタンから ThLaunchSite.Plugin.dll を選択して追加します。<br>
+                        詳しくは
+                        <a href="https://learn.microsoft.com/ja-jp/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2022" target="_blank">
+                            参照マネージャーで参照を追加する - Visual Studio (Windows) | Microsoft Learn
+                        </a>
+                    </p>
+                    <li>任意のソースファイルの先頭に using ThLaunchSite.Plugin を追加し、そのソースファイル内で実装されている任意のクラスに以下のいずれかのクラスを継承し、必要なプロパティおよびメソッドを実装する。</li>
+                    <ul>
+                        <li>
+                            <a href="#selected-game-plugin">SelectedGamePluginBase</a>
+                        </li>
+                        <li>
+                            <a href="#game-files-plugin">GameFilesPluginBase</a>
+                        </li>
+                        <li>
+                            <a href="#game-process-plugin">GameProcessPluginBase</a>
+                        </li>
+                        <li>
+                            <a href="#game-score-files-plugin">GameScoreFilesPluginBase</a>
+                        </li>
+                        <li>
+                            <a href="#game-play-log-plugin">GamePlayLogPluginBase</a>
+                        </li>
+                        <li>
+                            <a href="#tool-plugin">ToolPluginBase</a>
+                        </li>
+                    </ul>
+                </ol>
+            </div>
+            <div class="title" id="about-plugin-base-class">基底クラスについて</div>
+            <div class="main">
+                基底クラスの継承は東方管制塔 NX が東方管制塔 NX のプラグインであることやプラグインの種類を識別するのに必要です。<br>
+                基底クラスが継承されたクラスを読み込むので、基底クラスを継承するクラスの名前は任意で問題ありません。
+                ただし、クラスのアクセス修飾子は public にする必要があります。<br><br>
+                以下に各基底クラスの必須プロパティ、関数とその説明を示します。
+            </div><br>
+            <div class="sub-title" id="selected-game-plugin">SelectedGamePluginBase</div>
+            <div class="main">
+                この基底クラスを継承したクラスは SelectedGamePlugin として扱われます。
+                SelectedGamePlugin は、東方管制塔 NX のメインウィンドウで選択中のゲームについて、その Game ID とゲームの実行ファイルのパスが与えられます。
+                <li>必須プロパティ</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">プロパティ名</th><th width="75">型</th><th width="325">説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>CommandName</td><td>string</td><td>メニューに表示されるテキストを返します。</td>
+                    </tr>
+                </table>
+                <li>必須関数</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">関数名</th><th width="75">返り値</th><th width="325">引数</th>
+                    </tr>
+                    <tr>
+                        <td>Main</td><td>なし</td><td>string gameId, string gameFile</td>
+                    </tr>
+                </table><br>
+                プラグイン呼び出し時に実行される関数はMain(string gameId, string gameFile)です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
+                関数の引数について
+                <ul>
+                    <li>gameId</li>
+                    <p>東方管制塔 NX のメインウィンドウで選択中のゲームについて、その Game ID が代入されます。(string値)</p>
+                    <li>gameFile</li>
+                    <p>東方管制塔 NX のメインウィンドウで選択中のゲームについて、その実行ファイルのパスが代入されます。(string値)</p>
+                </ul>
+            </div><br>
+            <div class="sub-title" id="game-files-plugin">GameFilesPluginBase</div>
+            <div class="main">
+                この基底クラスを継承したクラスは GameFilesPlugin として扱われます。
+                GameFilesPlugin は、東方管制塔 NX にパスが登録されている作品の Game ID のリストと、各々のゲームの実行ファイルパスが与えられます。
+                <li>必須プロパティ</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">プロパティ名</th><th width="75">型</th><th width="325">説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>CommandName</td><td>string</td><td>メニューに表示されるテキストを返します。</td>
+                    </tr>
+                </table>
+                <li>必須関数</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">関数名</th><th width="75">返り値</th><th width="550">引数</th>
+                    </tr>
+                    <tr>
+                        <td>Main</td><td>なし</td><td>List&lt;string&gt; availableGamesList,<br>Dictionary&lt;string, string&gt; availableGameFilesDictionary</td>
+                    </tr>
+                </table><br>
+                プラグイン呼び出し時に実行される関数はMain(List&lt;string&gt; availableGamesList, Dictionary&lt;string, string&gt; availableGameFilesDictionary)です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
+                関数の引数について
+                <ul>
+                    <li>availableGamesList</li>
+                    <p>東方管制塔 NX にパスが登録されている作品の Game ID のリストが代入されます。(List&lt;string&gt;型)</p>
+                    <li>availableGameFilesDictionary</li>
+                    <p>東方管制塔 NX にパスが登録されている作品の Game ID を Key 、実行ファイルパスを Value とする Dictionary が代入されます。(Dictionary&lt;string, string&gt;型)</p>
+                </ul>
+            </div><br>
+            <div class="sub-title" id="game-process-plugin">GameProcessPluginBase</div>
+            <div class="main">
+                この基底クラスを継承したクラスは GameProcessPlugin として扱われます。
+                GameProcessPlugin は、東方管制塔 NX でゲームを実行したと同時に呼び出され、実行されたゲームの Game ID とプロセス名が与えられます。<br>
+                プロセス名はゲームの実行ファイル名から拡張子 .exe を取り除いたものです。<br><br>
+                このプラグインに関しては、ツールメニューにメニューが追加されません。
+                <li>必須プロパティ</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">プロパティ名</th><th width="75">型</th><th width="325">説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                </table>
+                <li>必須関数</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">関数名</th><th width="75">返り値</th><th width="550">引数</th>
+                    </tr>
+                    <tr>
+                        <td>Main</td><td>なし</td><td>string gameId, System.Diagnostics.Process gameProcess</td>
+                    </tr>
+                </table><br>
+                プラグイン呼び出し時に実行される関数はMain(string gameId, System.Diagnostics.Process gameProcess)です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
+                関数の引数について
+                <ul>
+                    <li>gameId</li>
+                    <p>東方管制塔 NX で実行されたゲームについて、その Game ID が代入されます。(string値)</p>
+                    <li>gameProcess</li>
+                    <p>東方管制塔 NX で実行されたゲームについて、そのプロセスのハンドラが代入されます。(System.Diagnostics.Processプロパティ)</p>
+                </ul>
+            </div><br>
+            <div class="sub-title" id="game-score-files-plugin">GameScoreFilesPluginBase</div>
+            <div class="main">
+                この基底クラスを継承したクラスは GameScoreFilesPlugin として扱われます。
+                GameScoreFilesPlugin は、東方管制塔 NX にパスが登録されている作品の Game ID のリストと、各々のゲームのスコアファイルパスが与えられます。
+                <li>必須プロパティ</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">プロパティ名</th><th width="75">型</th><th width="325">説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>CommandName</td><td>string</td><td>メニューに表示されるテキストを返します。</td>
+                    </tr>
+                </table>
+                <li>必須関数</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">関数名</th><th width="75">返り値</th><th width="550">引数</th>
+                    </tr>
+                    <tr>
+                        <td>Main</td><td>なし</td><td>List&lt;string&gt; availableGamesList,<br>Dictionary&lt;string, string&gt; availableGameScoreFilesDictionary</td>
+                    </tr>
+                </table><br>
+                プラグイン呼び出し時に実行される関数はMain(List&lt;string&gt; availableGamesList, Dictionary&lt;string, string&gt; availableGameScoreFilesDictionary)です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
+                関数の引数について
+                <ul>
+                    <li>availableGamesList</li>
+                    <p>東方管制塔 NX にパスが登録されている作品の Game ID のリストが代入されます。(List&lt;string&gt;型)</p>
+                    <li>availableGameScoreFilesDictionary</li>
+                    <p>東方管制塔 NX にパスが登録されている作品の Game ID を Key 、スコアファイルパスを Value とする Dictionary が代入されます。(Dictionary&lt;string, string&gt;型)</p>
+                </ul>
+            </div><br>
+            <div class="sub-title" id="game-play-log-plugin">GamePlayLogPluginBase</div>
+            <div class="main">
+                この基底クラスを継承したクラスは GamePlayLogPlugin として扱われます。
+                GamePlayLogPlugin は、東方管制塔 NX のゲーム実行履歴記録ファイル(xml形式)のパスが与えられます。<br><br>
+                ゲーム実行履歴をプラグインが利用するには、実行履歴記録ファイルを独自に読み取る必要があります。
+                ゲーム実行履歴記録ファイルの仕様については<a href="#about-game-execution-log">ゲーム実行履歴記録ファイルについて</a>を参照してください。
+                <li>必須プロパティ</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">プロパティ名</th><th width="75">型</th><th width="325">説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>CommandName</td><td>string</td><td>メニューに表示されるテキストを返します。</td>
+                    </tr>
+                </table>
+                <li>必須関数</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">関数名</th><th width="75">返り値</th><th width="325">引数</th>
+                    </tr>
+                    <tr>
+                        <td>Main</td><td>なし</td><td>string gamePlayLogFile</td>
+                    </tr>
+                </table><br>
+                プラグイン呼び出し時に実行される関数はMain(string gamePlayLogFile)です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。<br><br>
+                関数の引数について
+                <ul>
+                    <li>gamePlayLogFile</li>
+                    <p>東方管制塔 NX のゲーム実行履歴記録ファイル(xml形式)のパスが代入されます。(string値)</p>
+                </ul>
+            </div><br>
+            <div class="sub-title" id="tool-plugin">ToolPluginBase</div>
+            <div class="main">
+                この基底クラスを継承したクラスは ToolPlugin として扱われます。
+                ToolPlugin は東方管制塔 NX から一切のデータを与えられません。
+                したがって、独立性の高いツールを実装することができます。
+                <li>必須プロパティ</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">プロパティ名</th><th width="75">型</th><th width="325">説明</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td><td>string</td><td>プラグインの名前を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td><td>string</td><td>プラグインのバージョンを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td><td>string</td><td>プラグインの開発者名を返します。</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td><td>string</td><td>プラグインの説明テキストを返します。</td>
+                    </tr>
+                    <tr>
+                        <td>CommandName</td><td>string</td><td>メニューに表示されるテキストを返します。</td>
+                    </tr>
+                </table>
+                <li>必須関数</li>
+                <table border="1">
+                    <tr>
+                        <th width="150">関数名</th><th width="75">返り値</th><th width="325">引数</th>
+                    </tr>
+                    <tr>
+                        <td>Main</td><td>なし</td><td>なし</td>
+                    </tr>
+                </table><br>
+                プラグイン呼び出し時に実行される関数はMain()です。<br>
+                必須プロパティおよび関数のアクセス修飾子はpublicに指定してください。
+            </div><br>
+            <div class="title" id="make-plugin-with-window">
+                ウィンドウやダイアログをもつプラグインを作る
+            </div>
+            <div class="main">
+                ウィンドウやダイアログをもつプラグインを作るには、必須関数および必須プロパティを実装したクラス内に Window? MainWindow というプロパティを public で実装し、
+                プラグインのすべてのウィンドウやダイアログ(MessageBox 含む)の Owner に MainWindow プロパティを指定することを推奨します。
+                このプロパティが存在すると、東方管制塔 NX はこのプロパティにメインウィンドウのインスタンスを代入します。<br>
+                詳しくは<a href="https://github.com/armadillo-winX/ThLaunchSite.Plugins" target="_blank">東方管制塔 NX プラグイン集</a>のソースコードを参照してください。
+            </div><br>
+            <div class="title" id="about-game-execution-log">
+                ゲーム実行履歴記録ファイルについて
+            </div>
+            <div class="main">
+                東方管制塔 NX は、ゲームの実行履歴を東方管制塔 NX 実行ファイル(ThLaunchSite.exe)と同じディレクトリ下の GamePlayLog.xml というファイルに xml 形式で記録します。
+            </div>
+        </div>
