@@ -12,7 +12,9 @@
             </ul>
         </nav>
         {% else %}
-        <a class="site-brand" href="{{ '/' | relative_url }}">ましろん.NET</a>
+        <a class="site-brand" href="{{ '/' | relative_url }}">
+            <img src="{{ '/images/mashironn_banner.jpg' | relative_url }}" alt="当サイトのバナー画像" width="75%"/>
+        </a>
         <nav class="site-nav" aria-label="メインナビゲーション">
             <ul>
                 <li><a href="{{ '/' | relative_url }}">ホーム</a></li>
